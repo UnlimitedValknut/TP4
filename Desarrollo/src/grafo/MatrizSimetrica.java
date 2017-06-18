@@ -1,21 +1,24 @@
 package grafo;
 
+/**
+ * Clase que administra la matriz simétrica de un gráfo. <br>
+ */
 public class MatrizSimetrica {
 	/**
-	 * Matriz simétrica cargada en un vector. <br>
+	 * Indicador de si hay relación de nodos en la matriz simétrica. <br>
 	 */
 	private boolean[] matrizEnVector;
 	/**
-	 * Cantidad de nodos en el vector. <br>
+	 * Cantidad de nodos. <br>
 	 */
 	private int posiciones;
 
 	/**
-	 * Crea una matriz simetrica a partir de los nodos del grafo y sus aristas.
+	 * Crea una matriz simétrica a partir de la cantidad de nodos de un gráfo.
 	 * <br>
 	 * 
 	 * @param cantidadDeNodos
-	 *            Cantidad de nodos del grafo. <br>
+	 *            Cantidad de nodos del gráfo. <br>
 	 */
 	public MatrizSimetrica(final int cantidadDeNodos) {
 		this.posiciones = cantidadDeNodos;
@@ -24,10 +27,12 @@ public class MatrizSimetrica {
 	}
 
 	/**
-	 * Establece
+	 * Establece la condición de relación entre dos nodos en la matriz. <br>
 	 * 
 	 * @param fila
+	 *            Fila de la matriz. <br>
 	 * @param columna
+	 *            Columna de la matriz. <br>
 	 */
 	public void setMatrizSimetrica(int fila, int columna) {
 		if (columna < fila) {
@@ -39,6 +44,16 @@ public class MatrizSimetrica {
 		this.matrizEnVector[indice] = true;
 	}
 
+	/**
+	 * Devuelve la condición de relación entre dos nodos, dada su posición en la
+	 * matriz simétrica. <br>
+	 * 
+	 * @param fila
+	 *            Fila de la matriz. <br>
+	 * @param columna
+	 *            Columna de la matriz. <br>
+	 * @return true si existe la relación, false de lo contrario. <br>
+	 */
 	public boolean getMatrizSimetrica(int fila, int columna) {
 		if (columna < fila) {
 			int aux = fila;
@@ -59,19 +74,34 @@ public class MatrizSimetrica {
 	}
 
 	/**
-	 * Devuelve la cantidad de nodos en la matriz. <br>
+	 * Devuelve la cantidad de posiciones en la matriz simétrica. <br>
 	 * 
-	 * @return Cantidad de nodos. <br>
+	 * @return Cantidad de posiciones. <br>
 	 */
 	public int getPosiciones() {
 		return this.posiciones;
 	}
 
-	public boolean getValorMatrizSimetrica(int pos) {
+	/**
+	 * Devuelve la condición de relación entre dos nodos, dada su posición en el
+	 * vector de la matriz. <br>
+	 * 
+	 * @param pos
+	 *            Posición del vector. <br>
+	 * @return true si existe la relación, false de lo contrario. <br>
+	 */
+	public boolean getValorMatrizSimetrica(final int pos) {
 		return this.matrizEnVector[pos];
 	}
 
-	public void setValorMatrizSimetrica(int pos) {
+	/**
+	 * Establece la relación entre dos nodos, dada su posición en el vector de
+	 * la matriz. <br>
+	 * 
+	 * @param pos
+	 *            Posición del vector. <br>
+	 */
+	public void setValorMatrizSimetrica(final int pos) {
 		this.matrizEnVector[pos] = true;
 	}
 }

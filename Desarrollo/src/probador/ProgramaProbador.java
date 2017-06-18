@@ -1,8 +1,13 @@
 package probador;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 import grafo.MatrizSimetrica;
@@ -10,82 +15,117 @@ import grafo.Nodo;
 
 @SuppressWarnings("unused")
 public class ProgramaProbador {
+	/**
+	 * Matriz simétrica del gráfo. <br>
+	 */
 	private MatrizSimetrica matrizSimetrica;
+	/**
+	 * Nodos del gráfo. <br>
+	 */
 	private ArrayList<Nodo> nodos;
+	/**
+	 * Cantidad total de nodos del gráfo. <br>
+	 */
 	private int cantNodos;
+	/**
+	 * Cantidad total de aristas del gráfo. <br>
+	 */
 	private int cantAristas;
+	/**
+	 * Cantidad de nodos coloreados. <br>
+	 */
 	private int cantNodosColoreo;
+	/**
+	 * Cantidad de aristas coloreadas. <br>
+	 */
 	private int cantAristasColoreo;
+	/**
+	 * Cantidad de colores utilizados. <br>
+	 */
 	private int cantColores;
-	
-	public ProgramaProbador(String pathIn, String pathOut) {
-		Scanner in = null;
-		Scanner out = null;
-		
-		//LEO ENTRADA
+
+	public ProgramaProbador(final String pathIn, final String pathOut) {
+		FileReader ent = null;
+		FileReader sal = null;
+		BufferedReader entrada = null;
+		BufferedReader salida = null;
+		String linea;
+		String[] data;
+		boolean bandera = false;
+		int fila, columna, pos = 0;
 		try {
-			in = new Scanner(new File(pathIn));
-			
-			if(in.hasNextLine()) {
-				this.cantNodos = in.nextInt();
-				this.cantAristas = in.nextInt();
-				
-				in.nextInt();
-				in.nextInt();
-				in.nextInt();
-				
-				this.matrizSimetrica = new MatrizSimetrica(this.cantNodos);
-				
-				for(int i=0; i < this.cantAristas; i++) {
-					this.matrizSimetrica.setMatrizSimetrica(in.nextInt(), in.nextInt());
+			ent = new FileReader(new File(pathIn));
+			entrada = new BufferedReader(ent);
+			while ((linea = entrada.readLine()) != null) {
+				data = linea.split(" ");
+				if (!bandera) {
+					this.cantNodos = Integer.parseInt(data[0]);
+					this.cantAristas = Integer.parseInt(data[1]);
+					this.matrizSimetrica = new MatrizSimetrica(this.cantNodos);
+					bandera = true;
+				} else {
+					fila = Integer.parseInt(data[0]);
+					columna = Integer.parseInt(data[1]);
+					matrizSimetrica.setMatrizSimetrica(fila, columna);
 				}
 			}
-				
-			
-		} catch (FileNotFoundException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			in.close();
+			try {
+				entrada.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-		
-		//LEO SALIDA
+		bandera = false;
 		try {
-			out = new Scanner(new File(pathOut));
-			
-			if(out.hasNextLine()) {
-				this.cantNodosColoreo = out.nextInt();
-				this.cantColores = out.nextInt();
-				this.cantAristasColoreo = out.nextInt();
-				
-				out.nextInt();
-				out.nextInt();
-				out.nextInt();
-				
-				this.nodos = new ArrayList<>();
-				
-				for (int i = 0; i < this.cantNodosColoreo; i++) {
-					this.nodos.add(new Nodo(out.nextInt(), out.nextInt(), 0));
+			sal = new FileReader(new File(pathOut));
+			salida = new BufferedReader(sal);
+			while ((linea = salida.readLine()) != null) {
+				data = linea.split(" ");
+				if (!bandera) {
+					this.cantNodosColoreo = Integer.parseInt(data[0]);
+					this.cantColores = Integer.parseInt(data[1]);
+					this.cantAristasColoreo = Integer.parseInt(data[2]);
+					this.nodos = new ArrayList<>();
+					bandera = true;
+				} else {
+					pos = Integer.parseInt(data[0]);
+					int color = Integer.parseInt(data[1]);
+					this.nodos.add(new Nodo(pos, color, 0));
 				}
 			}
-		} catch (FileNotFoundException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			out.close();
+			try {
+				salida.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
-	
-	public boolean probador() {
-		int color;
-		
-		if(nodos.size() != matrizSimetrica.getPosiciones() || cantNodos != cantNodosColoreo || cantAristas != cantAristasColoreo)
-			return false;
-		
-		for (int i = 0; i < cantNodos; i++) {
-			color = nodos.get(i).getColor();
 
-			for (int j = i+1; j < cantNodos; j++) {
-					if(matrizSimetrica.getMatrizSimetrica(i, j)==true && color == nodos.get(j).getColor())
-						return false;
+	/**
+	 * Comprueba que lo obtenido con el programa probador coincida con la salida
+	 * esperada. <br>
+	 * 
+	 * @return true si coincide el resultado, false de lo contrario. <br>
+	 */
+	public boolean probador() {
+		int color, numero;
+		if (nodos.size() != matrizSimetrica.getPosiciones() || cantNodos != cantNodosColoreo
+				|| cantAristas != cantAristasColoreo) {
+			return false;
+		}
+		for (int i = 0; i < nodos.size(); i++) {
+			color = nodos.get(i).getColor();
+			numero = nodos.get(i).getNumero();
+			for (int j = numero + 1; j < nodos.size(); j++) {
+				if (matrizSimetrica.getMatrizSimetrica(numero, j) == true && color == nodos.get(j).getColor()) {
+					return false;
+				}
 			}
 		}
 		return true;

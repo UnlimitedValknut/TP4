@@ -1,15 +1,15 @@
 package grafo;
 
 /**
- * Clase que crea y administra la información de un nodo. <br>
+ * Clase que administra un nodo, sea su número, color y grado. <br>
  */
-public class Nodo implements Comparable<Nodo> {
+public class Nodo {
 	/**
-	 * Color de nodo. <br>
+	 * Color del nodo. <br>
 	 */
 	private int color;
 	/**
-	 * Identificador de nodo. <br>
+	 * Número del nodo. <br>
 	 */
 	private int numero;
 	/**
@@ -27,29 +27,28 @@ public class Nodo implements Comparable<Nodo> {
 	}
 
 	/**
-	 * Crea un nodo con su número idenitificador, su grado y el color que lo
-	 * identifique, llegado el caso. <br>
+	 * Crea un nodo. <br>
 	 * 
 	 * @param numero
-	 *            Posición del nodo. <br>
+	 *            Número del nodo. <br>
 	 * @param color
 	 *            Color del nodo. <br>
 	 * @param grado
 	 *            Grado del nodo. <br>
 	 */
-	public Nodo(int numero, int color, int grado) {
+	public Nodo(final int numero, final int color, final int grado) {
 		this.numero = numero;
 		this.color = color;
 		this.grado = grado;
 	}
 
 	/**
-	 * Crea un nodo de otro nodo. <br>
+	 * Crea un nodo a partir de otro nodo. <br>
 	 * 
 	 * @param nodo
-	 *            El otro nodo. <br>
+	 *            Nodo. <br>
 	 */
-	public Nodo(Nodo nodo) {
+	public Nodo(final Nodo nodo) {
 		this(nodo.numero, nodo.color, nodo.grado);
 	}
 
@@ -66,28 +65,28 @@ public class Nodo implements Comparable<Nodo> {
 	 * Establece el color del nodo. <br>
 	 * 
 	 * @param color
-	 *            Color del nodo. <br>
+	 *            Color. <br>
 	 */
-	public void setColor(int color) {
+	public void setColor(final int color) {
 		this.color = color;
 	}
 
 	/**
-	 * Devuelve el número identificador del nodo. <br>
+	 * Devuelve el número del nodo. <br>
 	 * 
-	 * @return Número identificador. <br>
+	 * @return Número del nodo. <br>
 	 */
 	public int getNumero() {
 		return numero;
 	}
 
 	/**
-	 * Establece el número identificador del nodo. <br>
+	 * Establece el número del nodo. <br>
 	 * 
 	 * @param numero
-	 *            Número identificador. <br>
+	 *            Número del nodo. <br>
 	 */
-	public void setNumero(int numero) {
+	public void setNumero(final int numero) {
 		this.numero = numero;
 	}
 
@@ -106,34 +105,24 @@ public class Nodo implements Comparable<Nodo> {
 	 * @param grado
 	 *            Grado del nodo. <br>
 	 */
-	public void setGrado(int grado) {
+	public void setGrado(final int grado) {
 		this.grado = grado;
 	}
 
 	/**
-	 * Compara el grado de los nodos. <br>
-	 */
-	@Override
-	public int compareTo(Nodo o) {
-		Integer gradoA = this.grado;
-		Integer gradoB = o.getGrado();
-		return gradoA.compareTo(gradoB);
-	}
-
-	/**
-	 * Copia los valores de un nodo. <br>
+	 * Copia los valores de un nodo en otro nodo. <br>
 	 * 
 	 * @param nodo
 	 *            Nodo. <br>
 	 */
-	public void copiarValores(Nodo nodo) {
-		this.numero = nodo.getNumero();
-		this.color = nodo.getColor();
-		this.grado = nodo.getGrado();
+	public void copiarValores(final Nodo nodo) {
+		numero = nodo.numero;
+		color = nodo.color;
+		grado = nodo.grado;
 	}
 
 	/**
-	 * Intercambia los valores del nodo con su adyacente. <br>
+	 * Intercambia un nodo con otro nodo adyacente. <br>
 	 * 
 	 * @param ady
 	 *            Nodo adyacente. <br>
@@ -145,13 +134,23 @@ public class Nodo implements Comparable<Nodo> {
 	}
 
 	/**
-	 * Compara el número de nodo. <br
+	 * Compara el grado de un nodo con su adyacente. <br>
 	 * 
-	 * @param o
-	 *            Nodo. <br>
-	 * @return true si el número es mayor, false de lo contrario. <br>
+	 * @param ady
+	 *            Nodo adyacente. <br>
+	 * @return 1 si el grado del nodo es mayor que el grado del nodo adyacente.
+	 *         <br>
+	 *         0 si el grado de los nodos es igual. <br>
+	 *         -1 si el grado del nodo es menor que el grado del nodo adyacente.
+	 *         <br>
 	 */
-	public boolean comparaNumero(Nodo o) {
-		return this.numero > o.numero;
+	public int compararGrados(final Nodo ady) {
+		if (this.grado > ady.grado) {
+			return 1;
+		}
+		if (this.grado < ady.grado) {
+			return -1;
+		}
+		return 0;
 	}
 }
