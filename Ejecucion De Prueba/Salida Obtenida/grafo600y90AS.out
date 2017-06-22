@@ -1,0 +1,25 @@
+Algoritmo: Secuencial Aleatorio
+Número cromático: 200
+Primera aparición menor: 1507
+CantColores  CantRepeticiones
+200 3
+201 9
+202 37
+203 105
+204 240
+205 479
+206 740
+207 1062
+208 1382
+209 1449
+210 1449
+211 1189
+212 860
+213 490
+214 296
+215 122
+216 59
+217 20
+218 5
+219 3
+221 1

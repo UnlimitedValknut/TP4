@@ -374,17 +374,17 @@ public class GrafoNDNP {
 	public void ejecutarCaso(int codAlgoritmo, int cantCorridas, String path) {
 		int cantColor[] = new int[cantidadDeNodos];
 		int nroCromatico = cantidadDeNodos;
+		int menorPosicion = 0;
 		for (int i = 0; i < cantCorridas; i++) {
 			selectorColoreoGrafo(codAlgoritmo);
 			cantColor[cantidadDeColores] += 1;
 			if (cantidadDeColores < nroCromatico) {
-				// me quedo con la menor cantidad de colores obtenidos hasta el
-				// momento.
+				menorPosicion = i + 1;
 				nroCromatico = cantidadDeColores;
 			}
 			alterarOrdenNodos();
 		}
-		grabarResumenCaso(codAlgoritmo, cantColor, nroCromatico, path);
+		grabarResumenCaso(codAlgoritmo, cantColor, nroCromatico, menorPosicion, path);
 	}
 
 	/**
@@ -397,11 +397,13 @@ public class GrafoNDNP {
 	 *            Cantidad de colores. <br>
 	 * @param nroCromatico
 	 *            Número cromático. <br>
+	 * @param menorPosicion
+	 *            Posición de la primera aparición del menor. <br>
 	 * @param path
 	 *            Dirección del archivo. <br>
 	 */
 	public void grabarResumenCaso(final int codAlgoritmo, final int[] cantColor, final int nroCromatico,
-			final String path) {
+			final int menorPosicion, final String path) {
 		try {
 			String algoritmo = null;
 			PrintWriter salida = new PrintWriter(new FileWriter(path));
@@ -418,6 +420,7 @@ public class GrafoNDNP {
 			}
 			salida.println("Algoritmo: " + algoritmo);
 			salida.println("Número cromático: " + nroCromatico);
+			salida.println("Primera aparición menor: " + menorPosicion);
 			salida.println("CantColores  CantRepeticiones");
 			for (int i = 0; i < cantColor.length; i++) {
 				if (cantColor[i] > 0) {
