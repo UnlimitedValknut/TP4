@@ -27,14 +27,14 @@ public class GeneracionTest {
 	}
 
 	@Test
-	public void generarGrafoNPartito800y400() {
-		GrafoNDNP grafo = GeneradorDeGrafos.generarGrafoNPartito(800, 400);
-		grafo.grabarEntradaGrafo(PATH_ARCHIVOS + "grafoNPartito800y400.in");
+	public void generarGrafoRegular1000y75() {
+		GrafoNDNP grafo = GeneradorDeGrafos.generarRegularNYAdyacencia(1000, 75.0);
+		grafo.grabarEntradaGrafo(PATH_ARCHIVOS + "grafo1000y75.in");
 	}
 
 	@Test
-	public void generarGrafoNPartito100y50() {
-		GrafoNDNP grafo = GeneradorDeGrafos.generarGrafoNPartito(100, 50);
-		grafo.grabarEntradaGrafo(PATH_ARCHIVOS + "grafoNPartito100y50.in");
+	public void generarGrafoRegular1000y50() {
+		GrafoNDNP grafo = GeneradorDeGrafos.generarRegularNYAdyacencia(1000, 50.0);
+		grafo.grabarEntradaGrafo(PATH_ARCHIVOS + "grafo1000y50.in");
 	}
 }

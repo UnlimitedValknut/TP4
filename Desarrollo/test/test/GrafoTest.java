@@ -52,16 +52,16 @@ public class GrafoTest {
 
 	@Test
 	public void pruebaColoreo1000y50() {
-		GrafoNDNP grafoTres = new GrafoNDNP(PATH_ARCHIVOS + "grafoRegular1000y50.in");
+		GrafoNDNP grafoTres = new GrafoNDNP(PATH_ARCHIVOS + "grafo1000y50.in");
 		grafoTres.colorearPowell();
-		grafoTres.grabarSalidaGrafo(PATH_ARCHIVOS_SAL + "grafoRegular1000y50.out", grafoTres.getVectorNodos());
+		grafoTres.grabarSalidaGrafo(PATH_ARCHIVOS_SAL + "grafo1000y50.out", grafoTres.getVectorNodos());
 	}
 
 	@Test
 	public void pruebaColoreo1000y75() {
-		GrafoNDNP grafoTres = new GrafoNDNP(PATH_ARCHIVOS + "grafoRegular1000y75.in");
+		GrafoNDNP grafoTres = new GrafoNDNP(PATH_ARCHIVOS + "grafo1000y75.in");
 		grafoTres.colorearPowell();
-		grafoTres.grabarSalidaGrafo(PATH_ARCHIVOS_SAL + "grafoRegular1000y75.out", grafoTres.getVectorNodos());
+		grafoTres.grabarSalidaGrafo(PATH_ARCHIVOS_SAL + "grafo1000y75.out", grafoTres.getVectorNodos());
 	}
 
 	@Test

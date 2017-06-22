@@ -2,18 +2,13 @@ package probador;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
 
 import grafo.MatrizSimetrica;
 import grafo.Nodo;
 
-@SuppressWarnings("unused")
 public class ProgramaProbador {
 	/**
 	 * Matriz simétrica del gráfo. <br>
@@ -44,6 +39,14 @@ public class ProgramaProbador {
 	 */
 	private int cantColores;
 
+	/**
+	 * Crea el programa que prueba el algoritmo de coloreo del grafo. <br>
+	 * 
+	 * @param pathIn
+	 *            Dirección del archivo de entrada. <br>
+	 * @param pathOut
+	 *            Dirección del archivo de salida. <br>
+	 */
 	public ProgramaProbador(final String pathIn, final String pathOut) {
 		FileReader ent = null;
 		FileReader sal = null;

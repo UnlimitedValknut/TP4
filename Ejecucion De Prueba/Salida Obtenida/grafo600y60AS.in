@@ -1,16 +1,15 @@
-Algoritmo: 1
-NRO CROMATICO: 99
+Algoritmo: Secuencial Aleatorio
+Número cromático: 100
 CantColores  CantRepeticiones
-99 1
-100 2
-101 25
-102 120
-103 543
-104 1420
-105 2306
-106 2498
-107 1735
-108 927
-109 334
-110 74
-111 15
+100 6
+101 26
+102 166
+103 634
+104 1542
+105 2271
+106 2405
+107 1757
+108 833
+109 286
+110 65
+111 9

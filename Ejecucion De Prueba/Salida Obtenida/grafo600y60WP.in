@@ -1,13 +1,12 @@
 Algoritmo: Wellsh-Powell
-Número cromático: 91
+Número cromático: 92
 CantColores  CantRepeticiones
-91 1
-92 35
-93 391
-94 1728
-95 3387
-96 2988
-97 1198
-98 252
-99 19
-100 1
+92 4
+93 85
+94 717
+95 2297
+96 3413
+97 2498
+98 842
+99 131
+100 13

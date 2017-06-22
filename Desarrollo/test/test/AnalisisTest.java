@@ -62,49 +62,42 @@ public class AnalisisTest {
 		GrafoNDNP grafo = new GrafoNDNP(PATH_ARCHIVOS_ENT + "grafo600y90.in");
 		grafo.ejecutarCaso(Constante.MATULA, 10000, PATH_ARCHIVOS_EJECUCION + "grafo600y90M.in");
 	}
-	//
-	// @Test
-	// public void analisisGrafoRegular1000y50AS() {
-	// GrafoNDNP grafo = new GrafoNDNP(PATH_ARCHIVOS_ENT + "grafo1000y50.in");
-	// grafo.ejecutarCaso(Constante.SECUENCIAL_ALEATORIO, 10000,
-	// PATH_ARCHIVOS_EJECUCION + "grafo1000y50.in");
-	// }
-	//
-	// @Test
-	// public void analisisGrafoRegular1000y50WP() {
-	// GrafoNDNP grafo = new GrafoNDNP(PATH_ARCHIVOS_ENT + "grafo1000y50.in");
-	// grafo.ejecutarCaso(Constante.WELSH_POWELL, 10000, PATH_ARCHIVOS_EJECUCION
-	// + "grafo1000y50.in");
-	// }
-	//
-	// @Test
-	// public void analisisGrafoRegular1000y50M() {
-	// GrafoNDNP grafo = new GrafoNDNP(PATH_ARCHIVOS_ENT + "grafo1000y50.in");
-	// grafo.ejecutarCaso(Constante.MATULA, 10000, PATH_ARCHIVOS_EJECUCION +
-	// "grafo1000y50.in");
-	// }
-	//
-	// @Test
-	// public void analisisGrafoRegular1000y75AS() {
-	// GrafoNDNP grafo = new GrafoNDNP(PATH_ARCHIVOS_ENT + "grafo1000y75.in");
-	//
-	// grafo.ejecutarCaso(Constante.SECUENCIAL_ALEATORIO, 10000,
-	// PATH_ARCHIVOS_EJECUCION + "grafo1000y75.in");
-	//
-	// }
-	//
-	// @Test
-	// public void analisisGrafoRegular1000y75WP() {
-	// GrafoNDNP grafo = new GrafoNDNP(PATH_ARCHIVOS_ENT + "grafo1000y75.in");
-	// grafo.ejecutarCaso(Constante.WELSH_POWELL, 10000, PATH_ARCHIVOS_EJECUCION
-	// + "grafo1000y75.in");
-	// }
-	//
-	// @Test
-	// public void analisisGrafoRegular1000y75M() {
-	// GrafoNDNP grafo = new GrafoNDNP(PATH_ARCHIVOS_ENT + "grafo1000y75.in");
-	// grafo.ejecutarCaso(Constante.MATULA, 10000, PATH_ARCHIVOS_EJECUCION +
-	// "grafo1000y75.in");
-	// }
-	//
+
+	@Test
+	public void analisisGrafoRegular1000y50AS() {
+		GrafoNDNP grafo = new GrafoNDNP(PATH_ARCHIVOS_ENT + "grafo1000y50.in");
+		grafo.ejecutarCaso(Constante.SECUENCIAL_ALEATORIO, 10000, PATH_ARCHIVOS_EJECUCION + "grafo1000y50.in");
+	}
+
+	@Test
+	public void analisisGrafoRegular1000y50WP() {
+		GrafoNDNP grafo = new GrafoNDNP(PATH_ARCHIVOS_ENT + "grafo1000y50.in");
+		grafo.ejecutarCaso(Constante.WELSH_POWELL, 10000, PATH_ARCHIVOS_EJECUCION + "grafo1000y50.in");
+	}
+
+	@Test
+	public void analisisGrafoRegular1000y50M() {
+		GrafoNDNP grafo = new GrafoNDNP(PATH_ARCHIVOS_ENT + "grafo1000y50.in");
+		grafo.ejecutarCaso(Constante.MATULA, 10000, PATH_ARCHIVOS_EJECUCION + "grafo1000y50.in");
+	}
+
+	@Test
+	public void analisisGrafoRegular1000y75AS() {
+		GrafoNDNP grafo = new GrafoNDNP(PATH_ARCHIVOS_ENT + "grafo1000y75.in");
+		grafo.ejecutarCaso(Constante.SECUENCIAL_ALEATORIO, 10000, PATH_ARCHIVOS_EJECUCION + "grafo1000y75.in");
+
+	}
+
+	@Test
+	public void analisisGrafoRegular1000y75WP() {
+		GrafoNDNP grafo = new GrafoNDNP(PATH_ARCHIVOS_ENT + "grafo1000y75.in");
+		grafo.ejecutarCaso(Constante.WELSH_POWELL, 10000, PATH_ARCHIVOS_EJECUCION + "grafo1000y75.in");
+	}
+
+	@Test
+	public void analisisGrafoRegular1000y75M() {
+		GrafoNDNP grafo = new GrafoNDNP(PATH_ARCHIVOS_ENT + "grafo1000y75.in");
+		grafo.ejecutarCaso(Constante.MATULA, 10000, PATH_ARCHIVOS_EJECUCION + "grafo1000y75.in");
+	}
+
 }
