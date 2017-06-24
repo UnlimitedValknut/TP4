@@ -45,6 +45,24 @@ public class MatrizSimetrica {
 	}
 
 	/**
+	 * Elimina una arista del grafo.<br>
+	 * 
+	 * @param fila
+	 *            Fila de la matriz. <br>
+	 * @param columna
+	 *            Columna de la matriz. <br>
+	 */
+	public void setEliminarArista(int fila, int columna) {
+		if (columna < fila) {
+			int aux = fila;
+			fila = columna;
+			columna = aux;
+		}
+		int indice = (int) (fila * this.posiciones + columna - (Math.pow(fila, 2) + 3 * fila + 2) / 2);
+		this.matrizEnVector[indice] = false;
+	}
+
+	/**
 	 * Devuelve la condición de relación entre dos nodos, dada su posición en la
 	 * matriz simétrica. <br>
 	 * 

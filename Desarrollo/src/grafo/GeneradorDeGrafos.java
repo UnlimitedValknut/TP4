@@ -65,6 +65,7 @@ public class GeneradorDeGrafos {
 	 *            Porcentaje de adyacencia. <br>
 	 * @return Gráfo. <br>
 	 */
+	// FUNCIONA BIEN
 	public static GrafoNDNP generarAleatorioNYPorcAdyacencia(int cantNodos, double porcentajeAdyacencia) {
 		Random arista = new Random();
 		MatrizSimetrica matriz = new MatrizSimetrica(cantNodos);
@@ -182,17 +183,29 @@ public class GeneradorDeGrafos {
 	 */
 	public static GrafoNDNP generarGrafoNPartito(final int cantNodos, final int n) {
 		MatrizSimetrica matriz;
+		int nodosXconjunto = cantNodos / n;
+		int resto = cantNodos % n;
+		int nodo1 = 0;
 		if (cantNodos % n != 0 && n >= cantNodos) {
 			System.out.println("No se puede generar grafo n partito.");
 			return null;
 		}
 		int cantAristas = 0;
 		matriz = new MatrizSimetrica(cantNodos);
-		for (int i = 0; i < cantNodos; i += 2) {
-			for (int j = i + 2; j < cantNodos; j++) {
-				matriz.setMatrizSimetrica(i, j);
-				cantAristas++;
+		for (int i = 0; i < n; i++) {
+			if (i == n - 1) {
+				nodosXconjunto = nodosXconjunto + resto;
 			}
+			for (int j = 0; j < nodosXconjunto - 1; j++) {
+				int nodo2 = nodo1 + 1;
+				for (int k = j + 1; k < nodosXconjunto; k++) {
+					matriz.setEliminarArista(nodo1, nodo2);
+					matriz.setEliminarArista(nodo2, nodo1);
+					nodo2++;
+				}
+				nodo1++;
+			}
+			nodo1++;
 		}
 		double porcAdyacencia = (2 * (double) cantAristas * 100) / ((cantNodos * (cantNodos - 1)) / 2);
 		calcularGradoMinYMax(matriz, cantNodos);

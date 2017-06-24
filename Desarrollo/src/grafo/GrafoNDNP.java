@@ -214,7 +214,6 @@ public class GrafoNDNP {
 			return false;
 		}
 		while (i < this.cantidadDeNodos) {
-			// si el nodo a colorear es adyacente a un nodo ya pintado de ese
 			if (nodos[i].getColor() == color) {
 				if (esAdyacente(this.nodos[i], this.nodos[pos])) {
 					return false;
@@ -309,9 +308,7 @@ public class GrafoNDNP {
 	public void alterarOrdenNodos() {
 		cantidadDeColores = 0; // vuelvo a setearlo en 0 por si se ejecuta
 								// varias veces el coloreo
-		Nodo vectorAux[] = new Nodo[cantidadDeNodos]; // creo vector auxiliar
-														// donde voy a alterar
-														// posiciones
+		Nodo vectorAux[] = new Nodo[cantidadDeNodos];
 		int[] numeros = new int[cantidadDeNodos];
 		Random rnd = new Random();
 		int aux = cantidadDeNodos, pos;
@@ -321,17 +318,7 @@ public class GrafoNDNP {
 		}
 		for (int i = 0; i < cantidadDeNodos; i++) {
 			pos = rnd.nextInt(aux);
-			vectorAux[numeros[pos]] = new Nodo(nodos[i].getNumero(), 0, nodos[i].getGrado()); // cambio
-																								// la
-																								// pos
-																								// del
-																								// nodo,
-																								// en
-																								// un
-																								// vector
-																								// de
-																								// nodos
-																								// aux
+			vectorAux[numeros[pos]] = new Nodo(nodos[i].getNumero(), 0, nodos[i].getGrado());
 			numeros[pos] = numeros[aux - 1];
 			aux--;
 		}
