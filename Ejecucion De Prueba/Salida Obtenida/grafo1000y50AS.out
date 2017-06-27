@@ -1,22 +1,22 @@
 Algoritmo: Secuencial Aleatorio
-Número cromático: 252
-Primera aparición menor: 1
+Número cromático: 334
+Primera aparición menor: 23
 CantColores  CantRepeticiones
-252 1
-334 10
-335 250
-336 1150
-337 1930
-338 2073
-339 1730
-340 1220
-341 738
-342 474
-343 234
-344 108
-345 49
-346 20
-347 8
-348 3
-349 1
-352 1
+334 26
+335 479
+336 1423
+337 2038
+338 2059
+339 1579
+340 1021
+341 656
+342 341
+343 210
+344 84
+345 45
+346 22
+347 9
+348 4
+349 2
+350 1
+499 1

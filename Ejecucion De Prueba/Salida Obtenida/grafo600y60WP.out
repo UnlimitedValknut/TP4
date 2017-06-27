@@ -1,13 +1,16 @@
 Algoritmo: Wellsh-Powell
-Número cromático: 92
-Primera aparición menor: 2510
+Número cromático: 94
+Primera aparición menor: 3858
 CantColores  CantRepeticiones
-92 5
-93 96
-94 728
-95 2194
-96 3494
-97 2450
-98 851
-99 171
-100 11
+94 1
+95 2
+96 60
+97 382
+98 1281
+99 2544
+100 2869
+101 1932
+102 759
+103 147
+104 21
+105 2

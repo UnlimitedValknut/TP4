@@ -1,24 +1,13 @@
 Algoritmo: Secuencial Aleatorio
-Número cromático: 49
-Primera aparición menor: 8657
+Número cromático: 63
+Primera aparición menor: 3530
 CantColores  CantRepeticiones
-49 1
-50 3
-51 40
-52 280
-53 734
-54 1050
-55 823
-56 533
-57 358
-58 358
-59 628
-60 1047
-61 1319
-62 1296
-63 888
-64 420
-65 173
-66 39
-67 8
-68 2
+63 4
+64 154
+65 993
+66 2868
+67 3516
+68 1943
+69 471
+70 48
+71 3

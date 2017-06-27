@@ -1,17 +1,16 @@
 Algoritmo: Matula
-Número cromático: 104
-Primera aparición menor: 2860
+Número cromático: 102
+Primera aparición menor: 6923
 CantColores  CantRepeticiones
-104 5
-105 55
-106 233
-107 738
-108 1494
-109 2213
-110 2268
-111 1737
-112 853
-113 308
-114 76
-115 19
-116 1
+102 4
+103 33
+104 198
+105 736
+106 1687
+107 2554
+108 2375
+109 1607
+110 614
+111 154
+112 33
+113 5

@@ -1,16 +1,16 @@
 Algoritmo: Secuencial Aleatorio
-Número cromático: 100
-Primera aparición menor: 1
+Número cromático: 98
+Primera aparición menor: 4392
 CantColores  CantRepeticiones
-100 8
-101 27
-102 182
-103 618
-104 1457
-105 2374
-106 2476
-107 1713
-108 790
-109 282
-110 63
-111 10
+98 2
+99 30
+100 154
+101 691
+102 1692
+103 2487
+104 2522
+105 1576
+106 643
+107 175
+108 27
+109 1
