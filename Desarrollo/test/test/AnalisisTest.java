@@ -99,12 +99,4 @@ public class AnalisisTest {
 		GrafoNDNP grafo = new GrafoNDNP(PATH_ARCHIVOS_ENT + "grafo1000y75.in");
 		grafo.ejecutarCaso(Constante.MATULA, 10000, PATH_ARCHIVOS_EJECUCION + "grafo1000y75M.out");
 	}
-
-	@Test
-	public void analisisGrafoRegular1000y75M() {
-		for (int i = 0; i < 100; i++) {
-			GrafoNDNP grafo = new GrafoNDNP(PATH_ARCHIVOS_ENT + "grafo4y1.in");
-			grafo.ejecutarCaso(Constante.SECUENCIAL_ALEATORIO, 10000, PATH_ARCHIVOS_EJECUCION + "grafo4y1.out");
-		}
-	}
 }
