@@ -1,197 +1,143 @@
 package grafo;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.Random;
 
 /**
  * Clase que genera grafos. <br>
  */
-@SuppressWarnings("unused")
 public class GeneradorDeGrafos {
 	/**
-	 * Cantidad de nodos. <br>
+	 * Cantidad de nodos del grafo. <br>
 	 */
 	private int cantidadNodos;
 	/**
-	 * Porcentaje de adyacencia. <br>
+	 * Cantidad de aristas del grafo. <br>
 	 */
-	private double porcentajeAdyacencia;
+	private int cantidadAristas;
 	/**
-	 * Grado máximo del gráfo. <br>
+	 * Grado máximo del grafo. <br>
 	 */
-	private static int gradoMax;
+	private int gradoMax;
 	/**
-	 * Grado mínimo del gráfo. <br>
+	 * Grado mínimo del grafo. <br>
 	 */
-	private static int gradoMin;
+	private int gradoMin;
+	/**
+	 * Porcentaje de adyacencia del grafo. <br>
+	 */
+	private int porcentaje;
+	/**
+	 * Matriz de adyacencia del grafo. <br>
+	 */
+	private byte matrizAdyacencia[][];
 
 	/**
-	 * Genera un gráfo aleatorio, dado su cantidad de nodos y una probabilidad
-	 * para cada arista. <br>
+	 * Genera un grafo. <br>
 	 * 
-	 * @param cantNodos
+	 * @param cantidadNodos
 	 *            Cantidad de nodos. <br>
-	 * @param probabilidad
-	 *            Probabilidad de cada arista. <br>
-	 * @return Gráfo. <br>
 	 */
-	public static GrafoNDNP generarAleatorioNYProbabilidad(final int cantNodos, final double probabilidad) {
-		// Probabilidad ejemplo= 0,5
-		int cantAristas = 0;
-		MatrizSimetrica matriz = new MatrizSimetrica(cantNodos);
-		for (int i = 0; i < cantNodos; i++) {
-			for (int j = i + 1; j < cantNodos; j++) {
-				if (!matriz.getMatrizSimetrica(i, j)) {
-					if (Math.random() < probabilidad) {
-						matriz.setMatrizSimetrica(i, j);
-						cantAristas++;
-					}
-				}
-			}
-		}
-		int cantTotAristas = (cantNodos * (cantNodos - 1)) / 2;
-		double porcentajeDeAdyacencia = Math.rint((cantAristas / cantTotAristas) * 100.0);
-		calcularGradoMinYMax(matriz, cantNodos);
-		GrafoNDNP grafo = new GrafoNDNP(matriz, cantNodos, cantAristas, porcentajeDeAdyacencia, gradoMax, gradoMin);
-		return grafo;
+	public GeneradorDeGrafos(final int cantNodos) {
+		this.cantidadNodos = cantNodos;
+		matrizAdyacencia = new byte[cantNodos][cantNodos];
 	}
 
 	/**
-	 * Genera un gráfo aleatorio, dado su cantidad de nodos y su porcentaje de
-	 * adyacencia. <br>
+	 * Genera un grafo con un porcentaje de adyacencia. <br>
 	 * 
-	 * @param cantNodos
-	 *            Cantidad de nodos. <br>
 	 * @param porcentajeAdyacencia
-	 *            Porcentaje de adyacencia. <br>
-	 * @return Gráfo. <br>
+	 *            Porcentaje de adyacencia del grafo. <br>
 	 */
-	// FUNCIONA BIEN
-	public static GrafoNDNP generarAleatorioNYPorcAdyacencia(int cantNodos, double porcentajeAdyacencia) {
-		Random arista = new Random();
-		MatrizSimetrica matriz = new MatrizSimetrica(cantNodos);
-		int maximoAristas = (cantNodos * (cantNodos - 1)) / 2;
-		int cantAristas = (int) (Math.rint((cantNodos * cantNodos - cantNodos) * 0.5 * (porcentajeAdyacencia / 100.0)));
-		int aristasAplicadas = 0;
-		double porcAdy = porcentajeAdyacencia;
-		while (aristasAplicadas != cantAristas) {
-			for (int i = 0; i < cantNodos; i++) {
-				for (int j = i + 1; j < cantNodos; j++) {
-					if (!matriz.getMatrizSimetrica(i, j)) {
-						if (arista.nextInt(2) == 1) {
-							matriz.setMatrizSimetrica(i, j);
-							aristasAplicadas++;
-						}
-					}
-					if (aristasAplicadas == cantAristas) {
-						break;
-					}
-				}
-				if (aristasAplicadas == cantAristas) {
-					break;
-				}
-			}
-		}
-		calcularGradoMinYMax(matriz, cantNodos);
-		GrafoNDNP grafo = new GrafoNDNP(matriz, cantNodos, cantAristas, porcAdy, gradoMax, gradoMin);
-		return grafo;
-	}
-
-	/**
-	 * Genera un gráfo regular, dado sun cantidad de nodos y el grado. <br>
-	 * 
-	 * @param cantNodos
-	 *            Cantidad de nodos. <br>
-	 * @param grado
-	 *            Grado. <br>
-	 * @return Gráfo. <br>
-	 */
-	public static GrafoNDNP generarRegularNYGrado(final int cantNodos, final int grado) {
-		MatrizSimetrica matriz;
-		int cantidadAristas = 0;
-		double porcentajeDeAdyacencia;
-		int saltoMax, j;
-		if (grado >= cantNodos) {
-			System.out.println("No se puede generar el grafo.");
-			return null;
-		}
-		matriz = new MatrizSimetrica(cantNodos);
-		if (((cantNodos % 2) == 0) || ((grado % 2) == 0)) {
-			saltoMax = (grado) / 2;
-			for (int salto = 0; salto <= saltoMax; salto++) {
-				for (int i = 1; i < cantNodos; i++) {
-					j = (i + salto) % cantNodos;
-					matriz.setMatrizSimetrica(i, j);
-					cantidadAristas++;
-				}
-			}
-			if (grado % 2 != 0) {
-				for (int i = 0; i < cantNodos / 2; i++) {
-					j = (i + cantNodos) / 2;
-					matriz.setMatrizSimetrica(i, j);
+	public void generarGrafoConPorcAdyacencia(final int porcentajeAdyacencia) {
+		this.porcentaje = porcentajeAdyacencia;
+		double proba = porcentaje / 100.0;
+		Random r = new Random();
+		for (int f = 0; f < cantidadNodos - 1; f++) {
+			for (int c = f + 1; c < cantidadNodos; c++) {
+				if (r.nextDouble() < proba) {
+					matrizAdyacencia[f][c] = 1;
+					matrizAdyacencia[c][f] = 1;
 					cantidadAristas++;
 				}
 			}
 		}
-		porcentajeDeAdyacencia = (grado * (cantNodos - 1)) * 100;
-		GrafoNDNP grafo = new GrafoNDNP(matriz, cantNodos, cantidadAristas, porcentajeDeAdyacencia, grado, grado);
-		return grafo;
+		calcularGrados();
 	}
 
-	/**
-	 * Genera un gráfo regular dado su cantidad de nodos y el porcentaje de
-	 * adyacencia. <br>
-	 * 
-	 * @param cantNodos
-	 *            Cantidad de nodos. <br>
-	 * @param porcAdyacencia
-	 *            Porcentaje de adyacencia. <br>
-	 * @return Gráfo. <br>
-	 */
-	public static GrafoNDNP generarRegularNYAdyacencia(final int cantNodos, final double porcAdyacencia) {
-		MatrizSimetrica matriz;
-		int grado = (int) (((porcAdyacencia / 100) * (cantNodos - 1)));
-		int cantAristas = (cantNodos * grado) / 2;
-		int saltoMax, j;
-		matriz = new MatrizSimetrica(cantNodos);
-		if (((cantNodos % 2) == 0) || ((grado % 2) == 0)) {
-			saltoMax = (grado) / 2;
-			for (int salto = 0; salto <= saltoMax; salto++) {
-				for (int i = 1; i < cantNodos; i++) {
-					j = (i + salto) % cantNodos;
-					matriz.setMatrizSimetrica(i, j);
-				}
-			}
-			if (grado % 2 != 0) {
-				for (int i = 0; i < cantNodos / 2; i++) {
-					j = (i + cantNodos) / 2;
-					matriz.setMatrizSimetrica(i, j);
-				}
+	public void generarGrafoConAristasMax() {
+		Random r = new Random();
+		int fil, col;
+		int maxAristas = (int) (((cantidadNodos * (cantidadNodos - 1) / 2) * porcentaje) / 100);
+		while (cantidadAristas < maxAristas) {
+			fil = r.nextInt(cantidadNodos);
+			col = r.nextInt(cantidadNodos);
+			if (matrizAdyacencia[fil][col] == 0 && fil != col) {
+				matrizAdyacencia[fil][col] = 1;
+				matrizAdyacencia[col][fil] = 1;
+				cantidadAristas++;
 			}
 		}
-		GrafoNDNP grafo = new GrafoNDNP(matriz, cantNodos, cantAristas, porcAdyacencia, grado, grado);
-		return grafo;
+		calcularGrados();
 	}
 
 	/**
-	 * Genera un gráfo n-partitos. <br>
+	 * Graba un grafo. <br>
 	 * 
-	 * @param cantNodos
-	 *            Cantidad de nodos. <br>
+	 * @param salida
+	 *            Dirección de salida. <br>
+	 */
+	public void escribir(final String salida) {
+		FileWriter fichero = null;
+		PrintWriter pw = null;
+		try {
+			fichero = new FileWriter(salida);
+			pw = new PrintWriter(fichero);
+			pw.println(cantidadNodos + " " + cantidadAristas + " " + porcentaje + " " + gradoMax + " " + gradoMin);
+			for (int f = 0; f < cantidadNodos; f++) {
+				for (int c = 0; c < cantidadNodos; c++) {
+					if (c > f && matrizAdyacencia[f][c] == 1) {
+						pw.println((f + 1) + " " + (c + 1));
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (null != fichero)
+					fichero.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+
+	/**
+	 * Elimina un arista. <br>
+	 * 
+	 * @param nodo1
+	 *            Nodo origen. <br>
+	 * @param nodo2
+	 *            Nodo fin. <br>
+	 */
+	private void eliminarArista(int nodo1, int nodo2) {
+		matrizAdyacencia[nodo1][nodo2] = 0;
+		matrizAdyacencia[nodo2][nodo1] = 0;
+	}
+
+	/**
+	 * Genera un grafo n-partito. <br>
+	 * 
 	 * @param n
-	 *            Partitos. <br>
-	 * @return Gráfo. <br>
+	 *            Cantidad de partitos. <br>
 	 */
-	public static GrafoNDNP generarGrafoNPartito(final int cantNodos, final int n) {
-		MatrizSimetrica matriz;
-		int nodosXconjunto = cantNodos / n;
-		int resto = cantNodos % n;
+	public void generarGrafoNPartito(final int n) {
+		int nodosXconjunto = cantidadNodos / n;
+		int resto = cantidadNodos % n;
 		int nodo1 = 0;
-		if (cantNodos % n != 0 && n >= cantNodos) {
-			System.out.println("No se puede generar grafo n partito.");
-			return null;
-		}
-		int cantAristas = 0;
-		matriz = new MatrizSimetrica(cantNodos);
+		generarGrafoConAristasMax();
 		for (int i = 0; i < n; i++) {
 			if (i == n - 1) {
 				nodosXconjunto = nodosXconjunto + resto;
@@ -199,49 +145,46 @@ public class GeneradorDeGrafos {
 			for (int j = 0; j < nodosXconjunto - 1; j++) {
 				int nodo2 = nodo1 + 1;
 				for (int k = j + 1; k < nodosXconjunto; k++) {
-					matriz.setEliminarArista(nodo1, nodo2);
-					matriz.setEliminarArista(nodo2, nodo1);
+					eliminarArista(nodo1, nodo2);
 					nodo2++;
 				}
 				nodo1++;
 			}
 			nodo1++;
 		}
-		double porcAdyacencia = (2 * (double) cantAristas * 100) / ((cantNodos * (cantNodos - 1)) / 2);
-		calcularGradoMinYMax(matriz, cantNodos);
-		GrafoNDNP grafo = new GrafoNDNP(matriz, cantNodos, cantAristas, porcAdyacencia, gradoMax, gradoMax);
-		return grafo;
+		calcularGrados();
 	}
 
 	/**
-	 * Calcula el grado mínimo y el grado máximo del gráfo. <br>
-	 * 
-	 * @param matriz
-	 *            Matriz simétrica del gráfo. <br>
-	 * @param cantNodos
-	 *            Cantidad de nodos del gráfo. <br>
+	 * Muestra un grafo. <br>
 	 */
-	private static void calcularGradoMinYMax(MatrizSimetrica matriz, int cantNodos) {
-		int[] sumador = new int[cantNodos];
-		for (int i = 0; i < cantNodos; i++) {
-			for (int j = i + 1; j < cantNodos; j++) {
-				if (matriz.getMatrizSimetrica(i, j)) {
-					sumador[i] += 1;
-					sumador[j] += 1;
+	public void mostrarGrafo() {
+		for (int f = 0; f < cantidadNodos; f++) {
+			System.out.println();
+			for (int c = 0; c < cantidadNodos; c++) {
+				System.out.print(matrizAdyacencia[f][c] + " ");
+			}
+		}
+	}
+
+	/**
+	 * Calcula los grados de un grafo. <br>
+	 */
+	private void calcularGrados() {
+		int temp = 0;
+		for (int f = 0; f < cantidadNodos; f++) {
+			for (int c = 0; c < cantidadNodos; c++) {
+				if (matrizAdyacencia[f][c] == 1) {
+					temp++;
 				}
 			}
-		}
-		gradoMax = 0;
-		for (int j = 0; j < sumador.length; j++) {
-			if (sumador[j] > gradoMax) {
-				gradoMax = sumador[j];
+			if (temp < gradoMin) {
+				gradoMin = temp;
 			}
-		}
-		gradoMin = gradoMax - 1;
-		for (int j = 0; j < sumador.length; j++) {
-			if (sumador[j] < gradoMin) {
-				gradoMin = sumador[j];
+			if (temp > gradoMax) {
+				gradoMax = temp;
 			}
+			temp = 0;
 		}
 	}
 }

@@ -4,122 +4,107 @@ package grafo;
  * Clase que administra la matriz simétrica de un gráfo. <br>
  */
 public class MatrizSimetrica {
-	/**
-	 * Indicador de si hay relación de nodos en la matriz simétrica. <br>
-	 */
-	private boolean[] matrizEnVector;
-	/**
-	 * Cantidad de nodos. <br>
-	 */
-	private int posiciones;
+	private int vec[];
+	private int nodos;
 
-	/**
-	 * Crea una matriz simétrica a partir de la cantidad de nodos de un gráfo.
-	 * <br>
-	 * 
-	 * @param cantidadDeNodos
-	 *            Cantidad de nodos del gráfo. <br>
-	 */
-	public MatrizSimetrica(final int cantidadDeNodos) {
-		this.posiciones = cantidadDeNodos;
-		int cantidadDePosiciones = (cantidadDeNodos * (cantidadDeNodos - 1)) / 2;
-		this.matrizEnVector = new boolean[cantidadDePosiciones];
+	public MatrizSimetrica(int nodos) {
+		vec = new int[nodos * (nodos - 1) / 2];
+		this.nodos = nodos;
 	}
 
-	/**
-	 * Establece la condición de relación entre dos nodos en la matriz. <br>
-	 * 
-	 * @param fila
-	 *            Fila de la matriz. <br>
-	 * @param columna
-	 *            Columna de la matriz. <br>
-	 */
-	public void setMatrizSimetrica(int fila, int columna) {
-		if (columna < fila) {
-			int aux = fila;
-			fila = columna;
-			columna = aux;
+	public int getNodos() {
+		return nodos;
+	}
+
+	public void setNodos(int nodos) {
+		this.nodos = nodos;
+	}
+
+	public int[] getVec() {
+		return vec;
+	}
+
+	public void setVec(int[] vec) {
+		this.vec = vec;
+	}
+
+	public void agregarAdyacencia(int i, int j) {
+		vec[calcularPos(i, j)] = 1;
+	}
+
+	public void agregarAdyacenciaConCosto(int i, int j, int costo) {
+		vec[calcularPos(i, j)] = costo;
+	}
+
+	public int verAdyacencia(int i, int j) {
+		return vec[calcularPos(i, j)];
+	}
+
+	public boolean sonAdyacentes(int i, int j) {
+		return vec[calcularPos(i, j)] == 1;
+	}
+
+	public boolean sonAdyacentesConCosto(int i, int j) {
+		return vec[calcularPos(i, j)] != 9999;
+	}
+
+	public int calcularPos(int i, int j) {
+		if (i > j)
+			return (int) (j * nodos + i - (Math.pow(j, 2) + 3 * j + 2) / 2);
+		else
+			return (int) (i * nodos + j - (Math.pow(i, 2) + 3 * i + 2) / 2);
+	}
+
+	public void iniciarACostoMax() {
+		for (int i = 0; i < nodos * (nodos - 1) / 2; i++)
+			vec[i] = 9999;
+	}
+
+	public void mostrar() {
+		for (int i = 0; i < nodos * (nodos - 1) / 2; i++) {
+			if (i != 0 && i % 10 == 0)
+				System.out.println();
+			System.out.print(vec[i] + "  ");
 		}
-		int indice = (int) (fila * this.posiciones + columna - (Math.pow(fila, 2) + 3 * fila + 2) / 2);
-		this.matrizEnVector[indice] = true;
 	}
 
-	/**
-	 * Elimina una arista del grafo.<br>
-	 * 
-	 * @param fila
-	 *            Fila de la matriz. <br>
-	 * @param columna
-	 *            Columna de la matriz. <br>
-	 */
-	public void setEliminarArista(int fila, int columna) {
-		if (columna < fila) {
-			int aux = fila;
-			fila = columna;
-			columna = aux;
+	public void mostrarMatrizSimetrica() {
+		for (int i = 0; i < nodos; i++) {
+			for (int j = 0; j < nodos; j++) {
+				if (i == j)
+					System.out.print("9999 ");
+				else
+					System.out.print(verAdyacencia(i, j) + " ");
+			}
+			System.out.println();
 		}
-		int indice = (int) (fila * this.posiciones + columna - (Math.pow(fila, 2) + 3 * fila + 2) / 2);
-		this.matrizEnVector[indice] = false;
 	}
 
-	/**
-	 * Devuelve la condición de relación entre dos nodos, dada su posición en la
-	 * matriz simétrica. <br>
-	 * 
-	 * @param fila
-	 *            Fila de la matriz. <br>
-	 * @param columna
-	 *            Columna de la matriz. <br>
-	 * @return true si existe la relación, false de lo contrario. <br>
-	 */
-	public boolean getMatrizSimetrica(int fila, int columna) {
-		if (columna < fila) {
-			int aux = fila;
-			fila = columna;
-			columna = aux;
+	public String toString() {
+		String vector = "";
+		for (int i = 0; i < vec.length; i++) {
+			vector += vec[i] + "  ";
 		}
-		int indice = (int) (fila * this.posiciones + columna - (Math.pow(fila, 2) + 3 * fila + 2) / 2);
-		return this.matrizEnVector[indice];
+		return vector;
 	}
 
-	/**
-	 * Devuelve la cantidad de aristas en la matriz. <br>
-	 * 
-	 * @return Cantidad de aristas. <br>
-	 */
-	public int getCantidadAristas() {
-		return matrizEnVector.length;
+	public static void main(String s[]) {
+		MatrizSimetrica m = new MatrizSimetrica(4);
+
+		m.agregarAdyacencia(0, 1);
+		m.agregarAdyacencia(0, 2);
+		m.agregarAdyacencia(1, 3);
+		m.agregarAdyacencia(2, 3);
+
+		System.out.println("VECTOR \n----------------");
+		System.out.println(m);
+
+		System.out.print(m.sonAdyacentes(0, 1) + "  ");
+		System.out.print(m.sonAdyacentes(0, 2) + "  ");
+		System.out.print(m.sonAdyacentes(0, 3) + "  ");
+		System.out.print(m.sonAdyacentes(1, 2) + "  ");
+		System.out.print(m.sonAdyacentes(1, 3) + "  ");
+		System.out.print(m.sonAdyacentes(2, 3) + "  ");
 	}
 
-	/**
-	 * Devuelve la cantidad de posiciones en la matriz simétrica. <br>
-	 * 
-	 * @return Cantidad de posiciones. <br>
-	 */
-	public int getPosiciones() {
-		return this.posiciones;
-	}
-
-	/**
-	 * Devuelve la condición de relación entre dos nodos, dada su posición en el
-	 * vector de la matriz. <br>
-	 * 
-	 * @param pos
-	 *            Posición del vector. <br>
-	 * @return true si existe la relación, false de lo contrario. <br>
-	 */
-	public boolean getValorMatrizSimetrica(final int pos) {
-		return this.matrizEnVector[pos];
-	}
-
-	/**
-	 * Establece la relación entre dos nodos, dada su posición en el vector de
-	 * la matriz. <br>
-	 * 
-	 * @param pos
-	 *            Posición del vector. <br>
-	 */
-	public void setValorMatrizSimetrica(final int pos) {
-		this.matrizEnVector[pos] = true;
-	}
 }
