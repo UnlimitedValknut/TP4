@@ -106,4 +106,13 @@ public class MatrizSimetrica {
 		int indice = (int) (fila * this.cantNodos + columna - (Math.pow(fila, 2) + 3 * fila + 2) / 2);
 		return this.vector[indice];
 	}
+
+	/**
+	 * Devuelve la cantidad de posiciones en la matriz simétrica. <br>
+	 * 
+	 * @return Cantidad de posiciones. <br>
+	 */
+	public int getPosiciones() {
+		return this.cantNodos;
+	}
 }
