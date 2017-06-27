@@ -68,4 +68,42 @@ public class MatrizSimetrica {
 		}
 		return clone;
 	}
+
+	/**
+	 * Establece la condición de relación entre dos nodos en la matriz. <br>
+	 * 
+	 * @param fila
+	 *            Fila de la matriz. <br>
+	 * @param columna
+	 *            Columna de la matriz. <br>
+	 */
+	public void setMatrizSimetrica(int fila, int columna) {
+		if (columna < fila) {
+			int aux = fila;
+			fila = columna;
+			columna = aux;
+		}
+		int indice = (int) (fila * this.cantNodos + columna - (Math.pow(fila, 2) + 3 * fila + 2) / 2);
+		this.vector[indice] = true;
+	}
+
+	/**
+	 * Devuelve la condición de relación entre dos nodos, dada su posición en la
+	 * matriz simétrica. <br>
+	 * 
+	 * @param fila
+	 *            Fila de la matriz. <br>
+	 * @param columna
+	 *            Columna de la matriz. <br>
+	 * @return true si existe la relación, false de lo contrario. <br>
+	 */
+	public boolean getMatrizSimetrica(int fila, int columna) {
+		if (columna < fila) {
+			int aux = fila;
+			fila = columna;
+			columna = aux;
+		}
+		int indice = (int) (fila * this.cantNodos + columna - (Math.pow(fila, 2) + 3 * fila + 2) / 2);
+		return this.vector[indice];
+	}
 }
