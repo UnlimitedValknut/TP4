@@ -3,7 +3,6 @@ package test;
 import org.junit.Test;
 
 import grafo.GeneradorDeGrafos;
-import grafo.GrafoNDNP;
 
 public class GeneracionTest {
 	private static final String PATH_ARCHIVOS = "Preparacion de Prueba/Programa Probador/Entrada/";
@@ -36,5 +35,31 @@ public class GeneracionTest {
 	public void generarGrafoRegular1000y50() {
 		GrafoNDNP grafo = GeneradorDeGrafos.generarRegularNYAdyacencia(1000, 50.0);
 		grafo.grabarEntradaGrafo(PATH_ARCHIVOS + "grafo1000y50.in");
+	}
+
+	@Test
+	public void generarGrafoNPartito() {
+		GeneradorDeGrafos.generarGrafoNPartito(PATH_ARCHIVOS + "grafoNPartito.in", 5, 3);
+	}
+
+	@Test
+	public void generarGrafoRegularProb() {
+		GeneradorDeGrafos.generarGrafoRegularGrado(PATH_ARCHIVOS + "grafoRegularGrado.in", 6, 3);
+	}
+
+	@Test
+	public void generarGrafoRegularAdyacencia() {
+		GeneradorDeGrafos.generarGrafoRegularPorcentajeAdyacencia(PATH_ARCHIVOS + "grafoRegularAdyacencia.in", 6, 40);
+	}
+
+	@Test
+	public void generarGrafoAleatorioProbabilidad() {
+		GeneradorDeGrafos.generarGrafoAleatorioNProbabilidad(PATH_ARCHIVOS + "grafoAleatorioProbabilidad.in", 6, 80);
+	}
+
+	@Test
+	public void generarGrafoAleatorioAdyacencia() {
+		GeneradorDeGrafos.generarGrafoAleatorioPorcentajeAdyacencia(PATH_ARCHIVOS + "grafoAleatorioAdyacencia.in", 6,
+				40);
 	}
 }
