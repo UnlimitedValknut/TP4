@@ -6,13 +6,12 @@ import java.io.FileReader;
 import java.util.HashSet;
 import java.util.Set;
 
-import grafo.Grafo;
-import herramientas.EntradaSalida;
+import grafo.GrafoNDNP;
 
 public class ProgramaProbador {
 
 	public static boolean coloreo(String pathGrafo, String pathColoreo) {
-		Grafo grafo = EntradaSalida.leerGrafoArch(pathGrafo);
+		GrafoNDNP grafo = new GrafoNDNP(pathGrafo);
 
 		int listaColoresNodos[] = null;
 		Set<Integer> codigoColor = new HashSet<Integer>(); // C�digo �nico.
@@ -75,9 +74,9 @@ public class ProgramaProbador {
 		 * Verifica que la cantidad de nodos del archivo coloreo coincida con la
 		 * cantidad de nodos del archivo grafos.
 		 */
-		if (cantNodosPintados != grafo.cantidadNodos) {
+		if (cantNodosPintados != grafo.getVectorNodos().length) {
 			System.out.println("La cantidad de nodos del Grafo: " + cantNodosPintados
-					+ ", no coincide con la cantidad de nodos pintados: " + grafo.cantidadNodos + ".");
+					+ ", no coincide con la cantidad de nodos pintados: " + grafo.getVectorNodos().length + ".");
 			return false;
 		}
 
@@ -101,7 +100,8 @@ public class ProgramaProbador {
 		/* Verifica que no haya nodos adyacentes pintados del mismo color. */
 		for (int i = 0; i < listaColoresNodos.length; i++)
 			for (int j = i + 1; j < listaColoresNodos.length; j++)
-				if (listaColoresNodos[i] == listaColoresNodos[j] && grafo.matrizSimetrica.esNodoAdyacenteCon(i, j)) {
+				if (listaColoresNodos[i] == listaColoresNodos[j]
+						&& grafo.getMatrizSimetrica().esNodoAdyacenteCon(i, j)) {
 					System.out.println("Nodos adyacentes (" + i + "," + j + ") pintados del mismo color.");
 					return false;
 				}

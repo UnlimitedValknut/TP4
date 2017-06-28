@@ -376,15 +376,17 @@ public class GrafoNDNP {
 		int nroCromatico = cantidadDeNodos;
 		int menorPosicion = 0;
 		for (int i = 0; i < cantCorridas; i++) {
+			alterarOrdenNodos();
 			selectorColoreoGrafo(codAlgoritmo);
 			cantColor[cantidadDeColores] += 1;
 			if (cantidadDeColores < nroCromatico) {
 				menorPosicion = i + 1;
 				nroCromatico = cantidadDeColores;
 			}
-			alterarOrdenNodos();
+			
 		}
-		grabarResumenCaso(codAlgoritmo, cantColor, nroCromatico, menorPosicion, path);
+		//grabarResumenCaso(codAlgoritmo, cantColor, nroCromatico, menorPosicion, path);
+		grabarSalidaGrafo(path, nodos);
 	}
 
 	/**
@@ -443,7 +445,7 @@ public class GrafoNDNP {
 	 */
 	public void grabarSalidaGrafo(final String pathOut, Nodo[] coloreo) {
 		try {
-			algSeleccion(coloreo);
+			algSeleccion(this.nodos);
 			PrintWriter salida = new PrintWriter(new File(pathOut));
 			salida.print(this.cantidadDeNodos + " " + this.cantidadDeColores + " ");
 			salida.print(this.cantidadDeAristas + " " + this.porcentajeAdyacencia + " ");
