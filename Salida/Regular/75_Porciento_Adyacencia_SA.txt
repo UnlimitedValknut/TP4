@@ -1,0 +1,13 @@
+Algoritmo: Secuencial Aleatorio
+Número cromático: 500
+Primera aparición menor: 39
+CantColores  CantRepeticiones
+500 3
+501 21
+502 24
+503 27
+504 17
+505 4
+506 1
+507 1
+508 2

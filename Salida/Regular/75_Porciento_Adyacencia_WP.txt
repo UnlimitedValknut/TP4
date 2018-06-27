@@ -1,0 +1,12 @@
+Algoritmo: Wellsh-Powell
+Número cromático: 500
+Primera aparición menor: 69
+CantColores  CantRepeticiones
+500 3
+501 26
+502 24
+503 28
+504 9
+505 4
+506 4
+508 2

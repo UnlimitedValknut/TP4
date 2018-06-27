@@ -1,0 +1,10 @@
+Algoritmo: Secuencial Aleatorio
+Número cromático: 64
+Primera aparición menor: 38
+CantColores  CantRepeticiones
+64 2
+65 8
+66 30
+67 34
+68 17
+69 9

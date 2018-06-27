@@ -1,0 +1,5 @@
+Algoritmo: Wellsh-Powell
+Número cromático: 3
+Primera aparición menor: 1
+CantColores  CantRepeticiones
+3 10000

@@ -1,0 +1,11 @@
+Algoritmo: Secuencial Aleatorio
+Número cromático: 26
+Primera aparición menor: 181
+CantColores  CantRepeticiones
+26 69
+27 1466
+28 4543
+29 3103
+30 743
+31 73
+32 3

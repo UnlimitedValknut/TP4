@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Random;
@@ -362,16 +361,19 @@ public class GrafoNDNP {
 	}
 
 	/**
-	 * Ejecuta un caso de prueba para obtener datos adicionales. <br>
+	 * Ejecuta el caso para obtener un análisis de un grafo de coloreo y una
+	 * sálida de el mismo. <br>
 	 * 
 	 * @param codAlgoritmo
 	 *            Algoritmo a utilizar. <br>
 	 * @param cantCorridas
 	 *            Cantidad de corridas. <br>
-	 * @param path
-	 *            Dirección del archivo. <br>
+	 * @param archivoColoreo
+	 *            Archivo con el grafo coloreado. <br>
+	 * @param archivoAnalisis
+	 *            Archivo con el análisis del coloreo. br>
 	 */
-	public void ejecutarCaso(int codAlgoritmo, int cantCorridas, String path) {
+	public void ejecutarCaso(int codAlgoritmo, int cantCorridas, File archivoColoreo, File archivoAnalisis) {
 		int cantColor[] = new int[cantidadDeNodos];
 		int nroCromatico = cantidadDeNodos;
 		int menorPosicion = 0;
@@ -383,10 +385,9 @@ public class GrafoNDNP {
 				menorPosicion = i + 1;
 				nroCromatico = cantidadDeColores;
 			}
-			
 		}
-		//grabarResumenCaso(codAlgoritmo, cantColor, nroCromatico, menorPosicion, path);
-		grabarSalidaGrafo(path, nodos);
+		grabarResumenCaso(codAlgoritmo, cantColor, nroCromatico, menorPosicion, archivoAnalisis);
+		grabarSalidaGrafo(archivoColoreo, nodos);
 	}
 
 	/**
@@ -401,14 +402,14 @@ public class GrafoNDNP {
 	 *            Número cromático. <br>
 	 * @param menorPosicion
 	 *            Posición de la primera aparición del menor. <br>
-	 * @param path
+	 * @param archivoResumen
 	 *            Dirección del archivo. <br>
 	 */
 	public void grabarResumenCaso(final int codAlgoritmo, final int[] cantColor, final int nroCromatico,
-			final int menorPosicion, final String path) {
+			final int menorPosicion, final File archivoResumen) {
 		try {
 			String algoritmo = null;
-			PrintWriter salida = new PrintWriter(new FileWriter(path));
+			PrintWriter salida = new PrintWriter(archivoResumen);
 			switch (codAlgoritmo) {
 			case 1:
 				algoritmo = Constante.ALG_SA;
@@ -438,15 +439,15 @@ public class GrafoNDNP {
 	/**
 	 * Graba la salida del gráfo. <br>
 	 * 
-	 * @param pathOut
+	 * @param archivoSalida
 	 *            Dirección del archivo de salida. <br>
 	 * @param coloreo
 	 *            Lista de nodos. <br>
 	 */
-	public void grabarSalidaGrafo(final String pathOut, Nodo[] coloreo) {
+	public void grabarSalidaGrafo(final File archivoSalida, Nodo[] coloreo) {
 		try {
 			algSeleccion(this.nodos);
-			PrintWriter salida = new PrintWriter(new File(pathOut));
+			PrintWriter salida = new PrintWriter(archivoSalida);
 			salida.print(this.cantidadDeNodos + " " + this.cantidadDeColores + " ");
 			salida.print(this.cantidadDeAristas + " " + this.porcentajeAdyacencia + " ");
 			salida.println(this.gradoMaximo + " " + this.gradoMinimo);

@@ -1,0 +1,11 @@
+Algoritmo: Matula
+Número cromático: 26
+Primera aparición menor: 421
+CantColores  CantRepeticiones
+26 65
+27 1420
+28 4467
+29 3278
+30 706
+31 61
+32 3

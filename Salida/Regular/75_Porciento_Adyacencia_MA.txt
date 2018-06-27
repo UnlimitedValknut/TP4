@@ -1,0 +1,13 @@
+Algoritmo: Matula
+Número cromático: 500
+Primera aparición menor: 42
+CantColores  CantRepeticiones
+500 3
+501 23
+502 28
+503 16
+504 13
+505 10
+506 4
+507 1
+509 2

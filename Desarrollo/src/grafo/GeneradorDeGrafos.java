@@ -216,12 +216,13 @@ public class GeneradorDeGrafos {
 			int gr = 0;
 			for (int i = 0; i < nPartito; i++) {
 				gr = grafo.matrizSimetrica.getGrado(i);
-				if (gr > grafo.gradoMax)
+				if (gr > grafo.gradoMax) {
 					grafo.gradoMax = gr;
-				if (gr < grafo.gradoMin)
+				}
+				if (gr < grafo.gradoMin) {
 					grafo.gradoMin = gr;
+				}
 			}
-
 			EntradaSalida.generarGrafoArch(path, grafo);
 		} else {
 			if (cantidadNodos % nPartito == 0) {

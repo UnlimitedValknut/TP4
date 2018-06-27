@@ -1,0 +1,19 @@
+Algoritmo: Secuencial Aleatorio
+Número cromático: 199
+Primera aparición menor: 5
+CantColores  CantRepeticiones
+199 1
+201 2
+202 5
+203 5
+204 11
+205 10
+206 6
+207 14
+208 16
+209 10
+210 7
+211 5
+212 5
+213 1
+215 2

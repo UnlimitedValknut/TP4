@@ -1,0 +1,13 @@
+Algoritmo: Matula
+Número cromático: 335
+Primera aparición menor: 27
+CantColores  CantRepeticiones
+335 4
+336 14
+337 16
+338 24
+339 9
+340 14
+341 10
+342 5
+343 4

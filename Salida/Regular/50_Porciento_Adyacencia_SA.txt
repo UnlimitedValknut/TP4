@@ -1,0 +1,14 @@
+Algoritmo: Secuencial Aleatorio
+Número cromático: 335
+Primera aparición menor: 4
+CantColores  CantRepeticiones
+335 7
+336 18
+337 24
+338 16
+339 15
+340 7
+341 3
+342 6
+343 3
+345 1

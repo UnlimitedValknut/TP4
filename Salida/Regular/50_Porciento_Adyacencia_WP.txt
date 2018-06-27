@@ -1,0 +1,14 @@
+Algoritmo: Wellsh-Powell
+Número cromático: 335
+Primera aparición menor: 32
+CantColores  CantRepeticiones
+335 2
+336 14
+337 24
+338 20
+339 17
+340 14
+341 5
+342 1
+343 2
+344 1

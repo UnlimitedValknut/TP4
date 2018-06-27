@@ -1,0 +1,10 @@
+Algoritmo: Wellsh-Powell
+Número cromático: 26
+Primera aparición menor: 64
+CantColores  CantRepeticiones
+26 70
+27 1432
+28 4516
+29 3173
+30 738
+31 71

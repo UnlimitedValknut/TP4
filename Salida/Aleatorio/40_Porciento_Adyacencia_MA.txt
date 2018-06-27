@@ -1,0 +1,10 @@
+Algoritmo: Matula
+Número cromático: 67
+Primera aparición menor: 31
+CantColores  CantRepeticiones
+67 1
+68 15
+69 33
+70 23
+71 23
+72 5

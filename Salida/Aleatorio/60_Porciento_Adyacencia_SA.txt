@@ -1,0 +1,12 @@
+Algoritmo: Secuencial Aleatorio
+Número cromático: 100
+Primera aparición menor: 27
+CantColores  CantRepeticiones
+100 1
+101 9
+102 17
+103 27
+104 21
+105 19
+106 2
+107 4

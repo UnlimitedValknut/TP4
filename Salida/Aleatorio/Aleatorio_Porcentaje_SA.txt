@@ -1,0 +1,9 @@
+Algoritmo: Secuencial Aleatorio
+Número cromático: 8
+Primera aparición menor: 14
+CantColores  CantRepeticiones
+8 548
+9 4736
+10 4026
+11 677
+12 13

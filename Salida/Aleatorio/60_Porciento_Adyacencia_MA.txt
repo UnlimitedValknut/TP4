@@ -1,0 +1,12 @@
+Algoritmo: Matula
+Número cromático: 103
+Primera aparición menor: 100
+CantColores  CantRepeticiones
+103 1
+104 2
+105 11
+106 22
+107 19
+108 24
+109 16
+110 5

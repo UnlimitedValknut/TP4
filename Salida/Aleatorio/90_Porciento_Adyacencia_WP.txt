@@ -1,0 +1,14 @@
+Algoritmo: Wellsh-Powell
+Número cromático: 197
+Primera aparición menor: 1
+CantColores  CantRepeticiones
+197 5
+198 11
+199 11
+200 17
+201 17
+202 21
+203 8
+204 5
+205 4
+206 1
