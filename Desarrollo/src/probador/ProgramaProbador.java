@@ -8,13 +8,25 @@ import java.util.Set;
 
 import grafo.GrafoNDNP;
 
+/**
+ * Clase que administra un programa probador. <br>
+ */
 public class ProgramaProbador {
-
+	/**
+	 * Prueba si un grafo fue correctamente coloreado. <br>
+	 * 
+	 * @param pathGrafo
+	 *            Path del grafo original. <br>
+	 * @param pathColoreo
+	 *            Path del grafo coloreado. <br>
+	 * @return <b>true</b> si fue coloreado correctamente. <br>
+	 *         <b>false</b> si no fue coloreado correctamente. <br>
+	 */
 	public static boolean coloreo(String pathGrafo, String pathColoreo) {
 		GrafoNDNP grafo = new GrafoNDNP(pathGrafo);
 
 		int listaColoresNodos[] = null;
-		Set<Integer> codigoColor = new HashSet<Integer>(); // C�digo �nico.
+		Set<Integer> codigoColor = new HashSet<Integer>();
 		int cantNodosPintados = 0;
 		int cantColoresPintados = 0;
 		boolean esNodoPintado[] = null;
@@ -35,7 +47,7 @@ public class ProgramaProbador {
 			esNodoPintado = new boolean[cantNodosPintados];
 
 			for (int i = 0; (linea = br.readLine()) != null; i++) {
-				/* Verifica que no haya m�s nodos que la cantidad de nodos. */
+				/* Verifica que no haya más nodos que la cantidad de nodos. */
 				if (i == cantNodosPintados) {
 					System.out.println("Hay nodos de sobra.");
 					return false;
@@ -50,7 +62,7 @@ public class ProgramaProbador {
 				}
 				esNodoPintado[nodoActual] = true;
 
-				/* Verifica que cada nodo tenga un c�digo de color. */
+				/* Verifica que cada nodo tenga un código de color. */
 				if (datos.length == 1) {
 					System.out.println("Nodo '" + nodoActual + "' pintado sin color.");
 					return false;
@@ -81,7 +93,7 @@ public class ProgramaProbador {
 		}
 
 		/*
-		 * Verifica que si el archivo de coloreo dice que us� X cantidad de
+		 * Verifica que si el archivo de coloreo dice que usó X cantidad de
 		 * colores, se hayan pintando X colores distintos.
 		 */
 		if (cantColoresPintados != codigoColor.size()) {
@@ -90,7 +102,7 @@ public class ProgramaProbador {
 			return false;
 		}
 
-		/* Verifica que todos los nodos est�n pintados. */
+		/* Verifica que todos los nodos estén pintados. */
 		for (int i = 0; i < esNodoPintado.length; i++)
 			if (!esNodoPintado[i]) {
 				System.out.println("No est�n pintados todos los nodos. Falta el nodo: " + i + ".");
