@@ -1,8 +1,10 @@
-package grafo;
+package generador;
 
 import java.util.Random;
 
-import herramientas.EntradaSalida;
+import grafo.EntradaSalidaGrafo;
+import grafo.Grafo;
+import grafo.MatrizSimetrica;
 
 /**
  * Clase que genera grafos. <br>
@@ -36,7 +38,7 @@ public class GeneradorDeGrafos {
 			if (gr < grafo.gradoMin)
 				grafo.gradoMin = gr;
 		}
-		EntradaSalida.generarGrafoArch(path, grafo);
+		EntradaSalidaGrafo.generarGrafoArch(path, grafo);
 	}
 
 	/**
@@ -86,7 +88,7 @@ public class GeneradorDeGrafos {
 				grafo.gradoMin = gr;
 			}
 		}
-		EntradaSalida.generarGrafoArch(path, grafo);
+		EntradaSalidaGrafo.generarGrafoArch(path, grafo);
 	}
 
 	/**
@@ -134,7 +136,7 @@ public class GeneradorDeGrafos {
 				saltear++;
 			}
 		}
-		EntradaSalida.generarGrafoArch(path, grafo);
+		EntradaSalidaGrafo.generarGrafoArch(path, grafo);
 	}
 
 	/**
@@ -184,7 +186,7 @@ public class GeneradorDeGrafos {
 				saltear++;
 			}
 		}
-		EntradaSalida.generarGrafoArch(path, grafo);
+		EntradaSalidaGrafo.generarGrafoArch(path, grafo);
 	}
 
 	/**
@@ -223,7 +225,7 @@ public class GeneradorDeGrafos {
 					grafo.gradoMin = gr;
 				}
 			}
-			EntradaSalida.generarGrafoArch(path, grafo);
+			EntradaSalidaGrafo.generarGrafoArch(path, grafo);
 		} else {
 			if (cantidadNodos % nPartito == 0) {
 				int islas = nPartito;
@@ -259,7 +261,7 @@ public class GeneradorDeGrafos {
 						grafo.gradoMin = gr;
 					}
 				}
-				EntradaSalida.generarGrafoArch(path, grafo);
+				EntradaSalidaGrafo.generarGrafoArch(path, grafo);
 			} else {// (cantidadNodos % nPartito != 0)
 				int islas = nPartito;
 				int nodosIsla1 = Math.round(cantidadNodos / (float) nPartito);
@@ -307,7 +309,7 @@ public class GeneradorDeGrafos {
 					}
 				}
 			}
-			EntradaSalida.generarGrafoArch(path, grafo);
+			EntradaSalidaGrafo.generarGrafoArch(path, grafo);
 		}
 	}
 }

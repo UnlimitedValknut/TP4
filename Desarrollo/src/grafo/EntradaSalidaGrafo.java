@@ -1,4 +1,4 @@
-package herramientas;
+package grafo;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -7,10 +7,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import grafo.Grafo;
-import grafo.MatrizSimetrica;
-
-public abstract class EntradaSalida {
+public abstract class EntradaSalidaGrafo {
 	/**
 	 * Genera un archivo con un grafo. <br>
 	 * 

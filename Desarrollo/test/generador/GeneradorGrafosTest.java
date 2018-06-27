@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import constantes.Archivos;
 import constantes.Paths;
-import grafo.GeneradorDeGrafos;
 
 public class GeneradorGrafosTest {
 	@Test

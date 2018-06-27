@@ -12,7 +12,6 @@ import org.junit.runners.Parameterized.Parameters;
 
 import constantes.Archivos;
 import constantes.Paths;
-import grafo.GeneradorDeGrafos;
 
 /**
  * Test de generador de grafos regulares. <br>

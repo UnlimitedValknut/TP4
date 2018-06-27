@@ -1,9 +1,9 @@
-package herramientas;
+package constantes;
 
 /**
- * Clase que indica el tipo de algoritmo a utilizar. <br>
+ * Clase que indica el tipo de método de coloreo a utilizar. <br>
  */
-public class Constante {
+public class MetodoColoreo {
 	/**
 	 * Algortimo secuencial aleatorio. <br>
 	 */

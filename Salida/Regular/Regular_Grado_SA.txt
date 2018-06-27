@@ -1,7 +1,7 @@
 Algoritmo: Secuencial Aleatorio
 Número cromático: 4
-Primera aparición menor: 2
+Primera aparición menor: 1
 CantColores  CantRepeticiones
-4 3402
-5 6407
-6 191
+4 3363
+5 6423
+6 214

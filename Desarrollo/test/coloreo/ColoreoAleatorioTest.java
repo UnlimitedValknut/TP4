@@ -11,9 +11,9 @@ import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
 import constantes.Archivos;
+import constantes.MetodoColoreo;
 import constantes.Paths;
 import grafo.GrafoNDNP;
-import herramientas.Constante;
 
 @RunWith(Parameterized.class)
 public class ColoreoAleatorioTest {
@@ -48,7 +48,7 @@ public class ColoreoAleatorioTest {
 	@Test
 	public void testSecuencial() {
 		new GrafoNDNP(Paths.PATH_ENTRADA_ALEATORIO.getPath() + this.nombreArchivoEntrada).ejecutarCaso(
-				Constante.SECUENCIAL_ALEATORIO, CANTIDAD_VUELTAS,
+				MetodoColoreo.SECUENCIAL_ALEATORIO, CANTIDAD_VUELTAS,
 				new File(Paths.PATH_SALIDA_ALEATORIO.getPath() + this.nombreArchivoSalida + "_SA.out"),
 				new File(Paths.PATH_SALIDA_ALEATORIO.getPath() + this.nombreArchivoSalida + "_SA.txt"));
 	}
@@ -56,14 +56,14 @@ public class ColoreoAleatorioTest {
 	@Test
 	public void testWellsPowell() {
 		new GrafoNDNP(Paths.PATH_ENTRADA_ALEATORIO.getPath() + this.nombreArchivoEntrada).ejecutarCaso(
-				Constante.WELSH_POWELL, CANTIDAD_VUELTAS,
+				MetodoColoreo.WELSH_POWELL, CANTIDAD_VUELTAS,
 				new File(Paths.PATH_SALIDA_ALEATORIO.getPath() + this.nombreArchivoSalida + "_WP.out"),
 				new File(Paths.PATH_SALIDA_ALEATORIO.getPath() + this.nombreArchivoSalida + "_WP.txt"));
 	}
 
 	@Test
 	public void testMatula() {
-		new GrafoNDNP(Paths.PATH_ENTRADA_ALEATORIO.getPath() + this.nombreArchivoEntrada).ejecutarCaso(Constante.MATULA,
+		new GrafoNDNP(Paths.PATH_ENTRADA_ALEATORIO.getPath() + this.nombreArchivoEntrada).ejecutarCaso(MetodoColoreo.MATULA,
 				CANTIDAD_VUELTAS,
 				new File(Paths.PATH_SALIDA_ALEATORIO.getPath() + this.nombreArchivoSalida + "_MA.out"),
 				new File(Paths.PATH_SALIDA_ALEATORIO.getPath() + this.nombreArchivoSalida + "_MA.txt"));

@@ -1,11 +1,11 @@
 Algoritmo: Matula
 Número cromático: 26
-Primera aparición menor: 421
+Primera aparición menor: 133
 CantColores  CantRepeticiones
-26 65
-27 1420
-28 4467
-29 3278
-30 706
-31 61
+26 62
+27 1542
+28 4443
+29 3173
+30 708
+31 69
 32 3

@@ -1,8 +1,7 @@
 Algoritmo: Matula
 Número cromático: 7
-Primera aparición menor: 10
+Primera aparición menor: 2
 CantColores  CantRepeticiones
-7 1218
-8 8098
-9 683
-10 1
+7 1331
+8 6596
+9 2073

@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Random;
 
-import herramientas.Constante;
+import constantes.MetodoColoreo;
 
 /**
  * Clase que administra y resuelve un gráfo no dirigido no ponderado. <br>
@@ -412,13 +412,13 @@ public class GrafoNDNP {
 			PrintWriter salida = new PrintWriter(archivoResumen);
 			switch (codAlgoritmo) {
 			case 1:
-				algoritmo = Constante.ALG_SA;
+				algoritmo = MetodoColoreo.ALG_SA;
 				break;
 			case 2:
-				algoritmo = Constante.ALG_WP;
+				algoritmo = MetodoColoreo.ALG_WP;
 				break;
 			case 3:
-				algoritmo = Constante.ALG_M;
+				algoritmo = MetodoColoreo.ALG_M;
 				break;
 			}
 			salida.println("Algoritmo: " + algoritmo);
